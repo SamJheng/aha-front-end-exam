@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from 'react'
-
 
 import { StyledSlider } from './styles'
 
@@ -13,21 +11,21 @@ const sliderMarks = [
 ]
 
 type SliderProps = {
-  setResultPerPage: Dispatch<SetStateAction<number>>
+  defaultValue:number;
+  min:number;
+  max:number;
+  onChange?: (event: Event, value: number | number[], activeThumb: number) => void;
 }
 
-const Slider = ({ setResultPerPage }: SliderProps) => {
-  const onChangeHandler = (_: Event, newValue: number | number[]) => {
-    setResultPerPage(newValue as number)
-  }
+const Slider = ({ defaultValue,max,min,onChange }: SliderProps) => {
 
   return (
     <StyledSlider
       marks={sliderMarks}
-      defaultValue={5}
-      min={1}
-      max={6}
-      onChange={onChangeHandler}
+      defaultValue={defaultValue}
+      min={min}
+      max={max}
+      onChange={onChange}
     />
   )
 }

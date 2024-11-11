@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction } from "react"
+import { ChangeEventHandler } from "react"
 import { StyledInput } from "./styles"
 type InputProps = {
-  onChange?: Dispatch<SetStateAction<string>>,
+  onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement> | undefined,
   placeholder?:string
 }
 
@@ -10,7 +10,7 @@ const Input = ({ onChange, placeholder }: InputProps)=>{
     <>
       <StyledInput
         placeholder={placeholder}
-        onChange={(e) => onChange && onChange(e.target.value)}
+        onChange={(e) => onChange && onChange(e)}
       />
     </>
   )

@@ -1,15 +1,16 @@
 
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 import { StyledButton } from "./styles"
 interface ButtonProps {
   children: ReactNode;
   borderRadius?:string;
-  variant?: 'outlined'|'contained'
+  variant?: 'outlined'|'contained';
+  onClick?: MouseEventHandler<HTMLButtonElement> | undefined
 }
-const Button = ({borderRadius ='4px', variant='contained',children }:ButtonProps)=>{
+const Button = ({borderRadius ='4px', variant='contained',children, onClick }:ButtonProps)=>{
   return (
     <>
-      <StyledButton variant={variant} style={{borderRadius}}>
+      <StyledButton variant={variant} style={{borderRadius}} onClick={(e)=> onClick && onClick(e)}>
         {children}
       </StyledButton>
     </>

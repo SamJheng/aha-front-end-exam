@@ -4,10 +4,8 @@ import Input from '../components/input';
 import RadiusButton from '../components/radius-button';
 import Slider from '../components/slider';
 
-import { useState } from 'react';
 
 function Showacse() {
-  const [resultPerPage, setResultPerPage] = useState<number>(5)
 
   return (
     <div className='flex justify-center'>
@@ -19,7 +17,7 @@ function Showacse() {
           </Button>
         </div>
         <div className=' mb-4 w-[725px]'>
-          <Button variant='outlined'>
+          <Button variant='outlined' >
             BUTTON
           </Button>
         </div>
@@ -38,7 +36,12 @@ function Showacse() {
           <Input placeholder='key on'></Input>
         </div>
         <div className='mb-4'>Slider</div>
-        <Slider setResultPerPage={setResultPerPage}></Slider>
+        <Slider 
+          defaultValue={5}
+          min={1}
+          max={6}
+          onChange={(e,i)=>console.log(e,i)}
+        ></Slider>
       </div>
     </div>
   )
