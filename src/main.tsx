@@ -4,13 +4,13 @@ import './index.css'
 import { ThemeProvider } from '@mui/material'
 import theme from './lib/theme.tsx'
 import CssBaseline from '@mui/material/CssBaseline';
-import Showacse from './pages/showcase.tsx'
+import { router } from './router.tsx'
+import { RouterProvider } from 'react-router-dom'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Showacse />
+      <RouterProvider router={router} />
     </ThemeProvider>
-    
   </StrictMode>,
 )
