@@ -70,6 +70,13 @@ const theme = createTheme({
           },
         },
       }
+    },
+    MuiSkeleton:{
+      styleOverrides:{
+        root:{
+          backgroundColor: '#FFFFFF80'
+        }
+      }
     }
   },
   palette: {
