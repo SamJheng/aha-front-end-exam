@@ -1,9 +1,9 @@
-import { createContext, ReactNode, useEffect, useRef, useState } from "react";
+import { createContext, ReactNode, useEffect,  useState } from "react";
 import { API_URL } from "../lib/constants";
 import axios from "axios";
 import { Page } from "../models/page";
 import { User } from "../models/user";
-
+import { useLocation } from "react-router-dom";
 interface IResultContext{
   page:number;
   setPage:(n:number)=>void;
@@ -11,8 +11,8 @@ interface IResultContext{
   setPageSize:(n:number)=>void;
   keyword:string;
   setKeyword:(n:string)=>void;
-  result:Page<User[]>|undefined;
-  setIsSearch:(b:boolean)=>void;
+  result:Page<User[]>;
+  setResult:(result:Page<User[]>)=>void
 }
 
 export const ResultContext = createContext<IResultContext|undefined>(undefined);
@@ -23,21 +23,36 @@ export const ResultProvider = ({children}:ResultProps)=>{
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [keyword, setKeyword] = useState('');
-  const [result, setResult] = useState<Page<User[]>|undefined>(undefined);
-  const [isSearch,setIsSearch] = useState(false);
+  const [result, setResult] = useState<Page<User[]>>({
+    page,
+    pageSize,
+    total:0,
+    totalPages:0,
+    data:[]
+  });
+  // const [isSearch,setIsSearch] = useState(false);
+  const location = useLocation();
   useEffect(()=>{
     const searchResults = async ()=>{
-      const result_url = `${API_URL}users/all?page=${page}&pageSize=${pageSize}&keyword=${keyword}`;
-      const res = await axios.get<Page<User[]>>(result_url);
-      setResult(res.data)
+      const resultUrl = `${API_URL}users/all?page=${page}&pageSize=${pageSize}&keyword=${keyword}`;
+      const res = await axios.get<Page<User[]>>(resultUrl);
+      if (res.status===200) {
+        setResult({
+          page: res.data.page,
+          pageSize: res.data.pageSize,
+          total: res.data.total,
+          totalPages: res.data.totalPages,
+          data: result?.data.concat(res.data.data),
+        })
+      }
     };
-    if (isSearch) {
+    if (location.pathname==='/result') {
       searchResults();
     }
-    
-  },[page,pageSize,keyword])
+  },[page,pageSize,keyword]);
+  
   return (
-    <ResultContext.Provider value={{page,setPage,pageSize,setPageSize,keyword,setKeyword, result,setIsSearch}}>
+    <ResultContext.Provider value={{page,setPage,pageSize,setPageSize,keyword,setKeyword, result,setResult}}>
       {children}
     </ResultContext.Provider>
   )

@@ -14,8 +14,14 @@ const Search = ()=>{
   const navigate = useNavigate();
 
   useEffect(()=>{
-    resultContext?.setIsSearch(false);
-  })
+    resultContext?.setResult({
+      page:0,
+      pageSize:0,
+      total:0,
+      totalPages:0,
+      data:[]
+    })
+  },[])
   useEffect(()=>{
     setPerNumber(resultNumber <= 5 ? resultNumber * 3 : 50)
   },[resultNumber]);
@@ -23,7 +29,6 @@ const Search = ()=>{
     resultContext?.setPage(1);
     resultContext?.setPageSize(perNumber);
     resultContext?.setKeyword(search);
-    resultContext?.setIsSearch(true);
     navigate(`/result`);
   }
   return (
