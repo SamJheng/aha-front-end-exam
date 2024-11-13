@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const Result = ()=>{
   const resultContext = useContext(ResultContext);
-  const [result,setResult] = useState<User[]>();
+  const [result,setResult] = useState<User[]>([]);
   const navigate = useNavigate();
   const SkeletonRenderer = Array.from(new Array(20)).map(() => {
     return (<>
@@ -34,7 +34,7 @@ const Result = ()=>{
         <IoIosArrowBack />
         <span className="ml-2 text-xl">Result</span>
       </div>
-      {result  ? 
+      {result.length > 0  ? 
       <div className="flex flex-wrap px-2">
         {result.map((item,index)=>(
         <div key={index}>
