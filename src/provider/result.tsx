@@ -37,13 +37,13 @@ export const ResultProvider = ({children}:ResultProps)=>{
       const resultUrl = `${API_URL}users/all?page=${page}&pageSize=${pageSize}&keyword=${keyword}`;
       const res = await axios.get<Page<User[]>>(resultUrl);
       if (res.status===200) {
-        setResult({
+        setResult(prevResult => ({
           page: res.data.page,
           pageSize: res.data.pageSize,
           total: res.data.total,
           totalPages: res.data.totalPages,
-          data: result?.data.concat(res.data.data),
-        })
+          data: page === 1 ? res.data.data : prevResult.data.concat(res.data.data),
+        }));
       }
     };
     if (location.pathname==='/result') {
