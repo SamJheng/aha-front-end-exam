@@ -32,7 +32,7 @@ const Search = ()=>{
     navigate(`/result`);
   }
   return (
-    <div className="px-32 pt-16 w-full h-full flex flex-col justify-between">
+    <div className="lg:px-32 px-6 lg:pt-16 w-full h-4/5 flex flex-col justify-between">
       <div className="">
         <div className="w-full border-b-2 border-[#FFFFFF80] mb-8 pb-8">
           <h3 className=" text-xl mb-4">Search</h3>
@@ -43,7 +43,8 @@ const Search = ()=>{
         </div>
         <div className="w-full">
           <h3 className=" text-xl mb-4">Of Results per page</h3>
-          <h3 className=" text-xl mb-4">{perNumber} Result</h3>
+          <h3 className=" text-xl mb-4">
+            <span className="text-4xl">{perNumber} </span> Result</h3>
           <Slider 
             defaultValue={resultNumber}
             min={1}
@@ -52,7 +53,7 @@ const Search = ()=>{
           ></Slider>
         </div>
       </div>
-      <div className="w-1/2 mb-16">
+      <div className="lg:w-1/2 w-full mb-8">
         <Button onClick={handleSearch}>
           <p>Search</p>
         </Button>

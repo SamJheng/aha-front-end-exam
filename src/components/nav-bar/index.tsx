@@ -3,8 +3,8 @@ import Logo from "../logo";
 
 const Navbar = ()=>{
   return (
-    <div className="bg-[#1B1B1B] h-full">
-      <div>
+    <div className="bg-[#1B1B1B] lg:h-full w-full h-16 flex justify-center lg:justify-start lg:flex-col">
+      <div className="hidden lg:block">
         <Logo/>
       </div>
       <div>

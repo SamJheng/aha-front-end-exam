@@ -19,7 +19,7 @@ const Result = ()=>{
     </>)
   })
   useEffect(()=>{
-    setResult(resultContext?.result?.data as User[])
+    setResult(resultContext?.result?.data as User[]);
   },[resultContext?.result]);
   const handleMore = ()=>{
     resultContext?.setPage(resultContext.page+1);
@@ -29,12 +29,12 @@ const Result = ()=>{
     
   }
   return (
-    <div className="h-full px-32 pt-16">
+    <div className="h-full lg:px-32 px-6 lg:pt-16">
       <div className="flex items-center" onClick={handlePrevPage}>
         <IoIosArrowBack />
         <span className="ml-2 text-xl">Result</span>
       </div>
-      {result.length > 0  ? 
+      {result.length >= 0  ? 
       <div className="flex flex-wrap px-2">
         {result.map((item,index)=>(
         <div key={index}>

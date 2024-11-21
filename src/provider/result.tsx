@@ -49,7 +49,7 @@ export const ResultProvider = ({children}:ResultProps)=>{
     if (location.pathname==='/result') {
       searchResults();
     }
-  },[page,pageSize,keyword]);
+  },[page,location.pathname]);
   
   return (
     <ResultContext.Provider value={{page,setPage,pageSize,setPageSize,keyword,setKeyword, result,setResult}}>

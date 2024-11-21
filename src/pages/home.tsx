@@ -5,20 +5,26 @@ import { Outlet } from "react-router-dom";
 import { ResultProvider } from "../provider/result";
 import Profile from "../components/profile";
 import { FollowProvider } from "../provider/follow";
+import Logo from "../components/logo";
 
 const Home = ()=>{
   return (
     <div className="flex h-full">
-      <div className="basis-20">
+      <div className="basis-20 hidden lg:block">
         <Navbar/>
       </div>
-      <div className="basis-2/3 h-full">
+      <div className="lg:basis-2/3 w-full h-full">
+        <div className="block lg:hidden">
+          <Logo/>
+        </div>
         <ResultProvider>
           <Outlet />
         </ResultProvider>
-        
+        <div className="lg:hidden block">
+          <Navbar/>
+        </div>
       </div>
-      <div className="basis-1/3 h-full">
+      <div className="lg:basis-1/3 hidden lg:block h-full">
         <FollowProvider>
           <Profile/>
         </FollowProvider>
