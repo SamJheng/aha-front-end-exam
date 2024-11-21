@@ -3,7 +3,6 @@ import { User } from "../../models/user"
 import FailImage from '../../assets/loading-fail.webp';
 interface ResultItemProps {
   item: User;
-  
 }
 const ResultItem = ({item}:ResultItemProps) => {
   const truncateString = (str: string, maxLength: number) => {

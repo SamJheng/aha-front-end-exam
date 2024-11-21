@@ -77,7 +77,24 @@ const theme = createTheme({
           backgroundColor: '#FFFFFF80'
         }
       }
-    }
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          color: '#929292', 
+          '&.Mui-selected': {
+            color: '#FFFFFF', 
+          },
+        },
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        indicator: {
+          backgroundColor: '#FFFFFF',
+        },
+      },
+    },
   },
   palette: {
     primary: {
