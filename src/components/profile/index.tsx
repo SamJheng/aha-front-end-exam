@@ -29,7 +29,7 @@ const Profile = ()=>{
   const [followerList,setFollowerList] = useState<User[]>([]);
   const [followingList,setFollowingList] = useState<User[]>([]);
   const followContext = useContext(FollowContext);
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
   useEffect(()=>{

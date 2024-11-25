@@ -50,7 +50,7 @@ const Search = ()=>{
             defaultValue={resultNumber}
             min={1}
             max={6}
-            onChange={(e,i)=>setResultNumber(i as number)}
+            onChange={(_e,i)=>setResultNumber(i as number)}
           ></Slider>
         </div>
       </div>
