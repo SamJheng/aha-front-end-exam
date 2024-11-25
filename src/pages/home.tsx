@@ -24,7 +24,7 @@ const Home = ()=>{
           <Navbar/>
         </div>
       </div>
-      <div className="lg:basis-1/3 hidden lg:block h-full">
+      <div className="xl:basis-1/3 hidden xl:block h-full">
         <FollowProvider>
           <Profile/>
         </FollowProvider>
