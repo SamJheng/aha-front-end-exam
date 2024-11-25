@@ -18,7 +18,7 @@ const ResultItem = ({item}:ResultItemProps) => {
   };
 
   return (
-    <div className="p-4 lg:w-60 w-full lg:h-56 h-auto">
+    <div className="p-4 lg:w-60 w-full lg:h-56 h-full">
       <div className="lg:w-56 w-full lg:h-36 h-full">
         <img className=" max-h-full max-w-full" src={imgSrc}  loading="lazy" onError={handleError}  />
       </div>

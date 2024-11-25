@@ -20,9 +20,7 @@ const Home = ()=>{
         <ResultProvider>
           <Outlet />
         </ResultProvider>
-        <div className="lg:hidden block">
-          <Navbar/>
-        </div>
+        
       </div>
       <div className="xl:basis-1/3 hidden xl:block h-full">
         <FollowProvider>

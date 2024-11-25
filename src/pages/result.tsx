@@ -37,9 +37,7 @@ const Result = ()=>{
       {result.length >= 0  ? 
       <div className="flex flex-wrap px-2">
         {result.map((item,index)=>(
-        <div key={index}>
-          <ResultItem key={item.id} item={item}/>
-        </div>
+        <ResultItem key={index} item={item}/>
         ))}
         
       </div>

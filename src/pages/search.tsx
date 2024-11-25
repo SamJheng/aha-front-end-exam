@@ -5,6 +5,7 @@ import Input from "../components/input";
 import Slider from "../components/slider";
 import { ResultContext } from "../provider/result";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/nav-bar";
 
 const Search = ()=>{
   const resultContext = useContext(ResultContext);
@@ -57,6 +58,9 @@ const Search = ()=>{
         <Button onClick={handleSearch}>
           <p>Search</p>
         </Button>
+      </div>
+      <div className="lg:hidden block fixed bottom-0 w-full left-0">
+        <Navbar/>
       </div>
     </div>
   )
